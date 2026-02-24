@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/your-repo.git'
+                git 'https://github.com/THANH0201/-Week5_Inclass_Temperature_Converter_Project_Extension.git'
+
             }
         }
 
