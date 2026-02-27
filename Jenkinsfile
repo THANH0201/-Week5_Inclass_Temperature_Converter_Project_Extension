@@ -42,7 +42,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("thanh0201/fliply:latest")
+                    dockerImage = docker.build("thanh0201/week5:latest")
                 }
             }
         }
