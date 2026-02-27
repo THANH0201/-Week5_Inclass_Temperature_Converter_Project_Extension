@@ -1,15 +1,13 @@
 # Stage 1: Build
-FROM maven:latest AS build
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-RUN mvn package
-# RUN mvn -q -e -DskipTests package
+RUN mvn -q -DskipTests package
 
-## Stage 2: Run the main class from the built JAR
-#FROM eclipse-temurin:21-jre
-#WORKDIR /app
-#COPY --from=build /app/target/*.jar app.jar
-#EXPOSE 8080
+# Stage 2: Run
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 CMD ["java", "-jar", "app.jar"]
 
